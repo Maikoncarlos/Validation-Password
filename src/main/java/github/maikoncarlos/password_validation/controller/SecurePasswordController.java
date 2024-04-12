@@ -1,6 +1,7 @@
 package github.maikoncarlos.password_validation.controller;
 
 import github.maikoncarlos.password_validation.controller.dto.PasswordRequestDTO;
+import github.maikoncarlos.password_validation.controller.dto.PasswordResponseDTO;
 import github.maikoncarlos.password_validation.service.SecurePasswordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
