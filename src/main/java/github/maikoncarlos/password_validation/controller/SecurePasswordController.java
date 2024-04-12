@@ -1,7 +1,7 @@
 package github.maikoncarlos.password_validation.controller;
 
 import github.maikoncarlos.password_validation.controller.dto.PasswordRequestDTO;
-import github.maikoncarlos.password_validation.service.SecurePasswordService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,14 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SecurePasswordController {
 
-    private final SecurePasswordService passwordService;
-
     @PostMapping(value = "/validate-password")
-    public ResponseEntity<PasswordResponseDTO> validatePassword(@RequestBody PasswordRequestDTO requestDTO) {
-        var errorList = passwordService.validadePassword(requestDTO.password());
-        if (errorList.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.badRequest().body(new PasswordResponseDTO(errorList));
+    public ResponseEntity<Void> validatePassword(@RequestBody @Valid PasswordRequestDTO requestDTO) {
+        return ResponseEntity.noContent().build();
     }
 }
